@@ -17,8 +17,10 @@ jobs:
           persist-credentials: false
       - name: Install Sphinx
         run: |
-          python3 -m pip install --upgrade pip
           pip3 install sphinx
+      - name: Install the code being documented
+        run: |
+          pip3 install .
       - name: Generate Sphinx Docs 🔧 
         run: |
           ~/.local/bin/sphinx-build -b html docs build
