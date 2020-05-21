@@ -80,6 +80,9 @@ class Secrets(SecretsBase):
             raise
 
     def _list_versions(self) -> list:
+        """
+        Adding a docstring right here. Pretty cool, eh?
+        """
         logging.debug(f"GCP _list_versions")
         parent = self.client.secret_path(self._project, self.secret)
         ret = []
