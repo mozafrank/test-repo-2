@@ -1,7 +1,7 @@
 name: Update Sphinx Docs
 on: [push]
 jobs:
-  build-and-deploy:
+  sphinx:
     runs-on: ubuntu-latest
     steps:
       - name: Install SSH Client 🔑
@@ -15,7 +15,7 @@ jobs:
 
       - name: Generate Sphinx Docs 🔧 
         run: |
-          pip3 install sphinx
+          pip3 install --user sphinx
           sphinx-build -b html docs build
 
       - name: Push Docs to gh-pages 🚀
