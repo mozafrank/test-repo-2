@@ -15,3 +15,5 @@ test-secrets.json
 
 # PyCharm
 .idea
+
+_build
