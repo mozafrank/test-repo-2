@@ -3,6 +3,9 @@ on: [push]
 jobs:
   sphinx:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
     steps:
       - name: Install SSH Client 🔑
         uses: webfactory/ssh-agent@v0.2.0
@@ -12,12 +15,13 @@ jobs:
         uses: actions/checkout@v2 
         with:
           persist-credentials: false
-
+      - name: Install Sphinx
+        run: |
+          python -m pip install --upgrade pip
+          pip install sphinx
       - name: Generate Sphinx Docs 🔧 
         run: |
-          pip3 install --user sphinx
           sphinx-build -b html docs build
-
       - name: Push Docs to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
