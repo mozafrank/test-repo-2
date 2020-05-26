@@ -27,7 +27,7 @@ jobs:
           pip3 install .
       - name: Generate Sphinx Docs 🔧 
         run: |
-          ~/.local/bin/sphinx-build -b html docs build
+          sphinx-build -b html docs build
       - name: Push Docs to gh-pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
