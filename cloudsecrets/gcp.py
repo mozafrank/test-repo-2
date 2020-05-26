@@ -129,7 +129,8 @@ class Secrets(SecretsBase):
 
     def update(self) -> None:
         """
-        Commit the current state of self._secrets to a new secret version
+        Commit the current state of self._secrets to a new secret version.
+        Here's an example of an added docstring; will it properly get deployed??
         """
         logging.debug(f"GCP update")
         j_blob = json.dumps(self._encoded_secrets).encode("UTF-8")
