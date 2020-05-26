@@ -11,13 +11,17 @@ jobs:
         uses: webfactory/ssh-agent@v0.2.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Checkout 🛎️
         uses: actions/checkout@v2 
         with:
           persist-credentials: false
       - name: Install Sphinx
         run: |
-          pip3 install sphinx
+          pip3 install sphinx wheel
       - name: Install the code being documented
         run: |
           pip3 install .
